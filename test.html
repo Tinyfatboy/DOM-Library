@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    </style>
+    <script scr=''>
+
+    </script>
+</head>
+<body>
+    <ul>
+       <li class="error">1</li>
+       <li class="error">2</li>
+       <li class="error">3</li>
+    </ul>
+</body>
+    <script>
+        console.assert(typeof $ === 'function')
+        var items = $('li')
+        console.log(items)
+        console.assert(items instanceof Object)
+        //no 'nodelist' datatype
+        console.assert(items.length)
+        
+        console.log(items.on)
+        console.assert(typeof items.on === 'function')
+        items.on('click',function(){
+          console.log('click')
+        })
+        
+        console.assert(typeof items.addClass === 'function')
+        console.log(typeof items.addClass('hi') === 'object')
+        console.assert(items.addClass('hi') ===items)
+        items.addClass('hi').removeClass('error')
+        console.log(items)
+        
+        console.assert(typeof items.text === 'function')
+        items.text('Hello World')
+        console.log(items.text())
+        
+        let item = items.get(0)
+        //item is an element
+        let $item = $(item)
+
+        console.assert(item.tagName === 'LI')
+        console.assert(item.addEventListener !== undefined)
+
+        console.assert(item === items[0])
+        console.assert(item.siblings === undefined)
+        console.assert($item.siblings !== undefined)
+        
+        console.log(item)
+        console.log($item[0])
+        console.assert(item === $item[0])
+        
+        console.assert(typeof item.on === 'undefined')
+        console.assert(typeof $item.on === 'function')
+        console.assert(!item.length)
+        console.assert($item.length)
+
+        let $li = $('li:nth-child(2)') 
+        console.log($li.siblings())
+        $li.siblings().addClass('error')
+        console.assert($li.siblings().previousSelection === $li)
+        console.assert($li.siblings().end()===
+        $li.siblings().previousSelection )
+
+
+        $li.siblings().removeClass('error').end().addClass('error')
+
+        var arrli = document.querySelectorAll('li')
+        console.log(arrli)
+        var $arry = $(arrli)
+        console.log($arry)
+        
+    </script>
+</html>
